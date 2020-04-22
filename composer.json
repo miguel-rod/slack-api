@@ -1,0 +1,55 @@
+{
+    "name": "miguel-rod/slack-api",
+    "description": "slack api",
+    "keywords": [
+        "miguel-rod",
+        "slack-api"
+    ],
+    "homepage": "https://github.com/miguel-rod/slack-api",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "miguel rodriguez",
+            "email": "mike.rodriguez91@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "guzzlehttp/guzzle": "^6.5",
+        "illuminate/support": "^6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MiguelRod\\SlackApi\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MiguelRod\\SlackApi\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MiguelRod\\SlackApi\\SlackApiServiceProvider"
+            ],
+            "aliases": {
+                "SlackApi": "MiguelRod\\SlackApi\\SlackApiFacade"
+            }
+        }
+    }
+}
