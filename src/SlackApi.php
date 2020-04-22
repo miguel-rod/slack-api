@@ -13,9 +13,27 @@ class SlackApi
         $this->client = $client ?: new Client();
     }
 
-    public function uploadFile($path)
+    public function fileUpload($params =[])
     {
-        $options = [
+        $options=[
+            'headers'  => [
+                'Authorization'=>'Bearer '. config('slack-api.slack-token')
+                ]
+            ];
+        foreach ($params as $key => $value) {
+            if ($key == 'file') {
+                $options['multipart'][]=[
+                    'name'  =>  $key,
+                    'contents'  =>  fopen($value, 'r')
+                ];
+            } else {
+                $options['multipart'][]=[
+                    'name'=> $key,
+                    'contents'=>$value
+                ];
+            }
+        }
+        /* $options = [
             'multipart'  =>[
                 [
                     'name'=>'channels',
@@ -32,7 +50,7 @@ class SlackApi
             ],
             'headers'  => [
                 'Authorization'=>'Bearer xoxb-1068834984038-1068983525878-eyUYByMFuUWcQ5kKGvqyzfIq']
-            ];
+            ]; */
         $response = $this->client->post(self::SLACK_FILE_UPLOAD, $options);
         return json_decode($response->getBody()->getContents());
     }

@@ -81,9 +81,11 @@ class SlackApiTest extends TestCase
                                                     }')]);
         $handler = HandlerStack::create($mock);
         $client = new Client(['handler'=>$handler]);
-        $slack = new SlackApi($client);
-        $response = $slack->uploadFile();
 
-        $this->assertSame(true, $response);
+        $slack = new SlackApi($client);
+
+        $response = $slack->fileUpload(['path'=>'test path','file'=>__DIR__.'/testfile.txt','filename'=>'test filename','title'=>' test title']);
+
+        $this->assertSame(true, $response->ok);
     }
 }
