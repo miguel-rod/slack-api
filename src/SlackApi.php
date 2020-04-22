@@ -33,24 +33,7 @@ class SlackApi
                 ];
             }
         }
-        /* $options = [
-            'multipart'  =>[
-                [
-                    'name'=>'channels',
-                    'contents'=>'dev,privatetest'
-                ],
-                [
-                    'name'=>'title',
-                    'contents'     => 'test title',
-                ],
-                [
-                    'contents'   => fopen($path, 'r'),
-                    'name' => 'file'
-                ]
-            ],
-            'headers'  => [
-                'Authorization'=>'Bearer xoxb-1068834984038-1068983525878-eyUYByMFuUWcQ5kKGvqyzfIq']
-            ]; */
+
         $response = $this->client->post(self::SLACK_FILE_UPLOAD, $options);
         return json_decode($response->getBody()->getContents());
     }
