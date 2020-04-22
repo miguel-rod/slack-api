@@ -8,15 +8,13 @@
     "homepage": "https://github.com/miguel-rod/slack-api",
     "license": "MIT",
     "type": "library",
-    "authors": [
-        {
-            "name": "miguel rodriguez",
-            "email": "mike.rodriguez91@gmail.com",
-            "role": "Developer"
-        }
-    ],
+    "authors": [{
+        "name": "miguel rodriguez",
+        "email": "mike.rodriguez91@gmail.com",
+        "role": "Developer"
+    }],
     "require": {
-        "php": "^7.1",
+        "php": "^7.2",
         "guzzlehttp/guzzle": "^6.5",
         "illuminate/support": "^6.0"
     },
